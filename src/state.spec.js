@@ -1,5 +1,5 @@
 import * as State from './state';
-import * as action from './actions';
+import { INCREMENT, DECREMENT } from './actions';
 
 describe('Counter state', () => {
   describe('#init state', () => {
@@ -21,12 +21,12 @@ describe('Counter state', () => {
 
     it('should increase counter value from 0 => 1', () => {
       const state = State.init();
-      expect(State.update(action.INCREMENT, state)).toEqual({ counter: 1 });
+      expect(State.update(INCREMENT, state)).toEqual({ counter: 1 });
     });
 
     it('should decrease counter value from 0 => -1', () => {
       const state = State.init();
-      expect(State.update(action.DECREMENT, state)).toEqual({ counter: -1 });
+      expect(State.update(DECREMENT, state)).toEqual({ counter: -1 });
     });
   });
 });
