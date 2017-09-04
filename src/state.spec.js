@@ -1,4 +1,5 @@
 import * as State from './state';
+import * as action from './actions';
 
 describe('Counter state', () => {
   describe('#init state', () => {
@@ -17,5 +18,10 @@ describe('Counter state', () => {
       const state = State.init();
       expect(State.update('NOSENSE_ACTION', state)).not.toBe(state);
     });
+
+    it('should increase counter value from 0 => 1', () => {
+      const state = State.init();
+      expect(State.update(action.INCREMENT, state)).toEqual({ counter: 1 });
+    })
   });
 });
