@@ -7,4 +7,9 @@ describe('<Counter />', () => {
     const component = shallow(<Counter />);
     expect(component.find('button')).toHaveLength(2);
   });
+
+  it('should has default value with 0', () => {
+    const component = shallow(<Counter />);
+    expect(component.find('h1').text()).toBe('0');
+  })
 });
