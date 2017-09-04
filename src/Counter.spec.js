@@ -38,4 +38,16 @@ describe('<Counter />', () => {
     component.find('button.minus').simulate('click');
     expect(component.find('h1').text()).toBe('-2');
   });
+
+  it('should has value for 3 when clicked increment 5 times then decrement 2 times', () => {
+    const component = shallow(<Counter />);
+    component.find('button.add').simulate('click');
+    component.find('button.add').simulate('click');
+    component.find('button.add').simulate('click');
+    component.find('button.add').simulate('click');
+    component.find('button.add').simulate('click');
+    component.find('button.minus').simulate('click');
+    component.find('button.minus').simulate('click');
+    expect(component.find('h1').text()).toBe('3');
+  });
 });
