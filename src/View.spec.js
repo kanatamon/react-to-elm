@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import View from './View';
+import { INCREMENT, DECREMENT } from './actions';
 
 describe('<View />', () => {
   it('should has 2 buttons', () => {
@@ -17,4 +18,30 @@ describe('<View />', () => {
     const component = shallow(<View counter={10} onAction={() => {}}/>);
     expect(component.find('h1').text()).toBe('10');
   })
+
+  it('should container INCREMENT when add button is clicked', () => {
+    const calledMessages = [];
+    const onAddButtonClick = () => calledMessages.push(INCREMENT);
+    const component = shallow(<View counter={0} onAddButtonClick={onAddButtonClick} />);
+    component.find('button.add').simulate('click');
+    expect(calledMessages).toContain(INCREMENT);
+  });
+
+  it('should container DECREMENT when minus button is clicked', () => {
+    const calledMessages = [];
+    const onMinusButtonClick = () => calledMessages.push(DECREMENT);
+    const component = shallow(<View counter={0} onMinusButtonClick={onMinusButtonClick} />);
+    component.find('button.minus').simulate('click');
+    expect(calledMessages).toContain(DECREMENT);
+  });
 });
+
+
+
+
+
+
+
+
+
+
