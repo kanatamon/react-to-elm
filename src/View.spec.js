@@ -21,16 +21,16 @@ describe('<View />', () => {
 
   it('should container INCREMENT when add button is clicked', () => {
     const calledMessages = [];
-    const onAddButtonClick = () => calledMessages.push(INCREMENT);
-    const component = shallow(<View counter={0} onAddButtonClick={onAddButtonClick} />);
+    const onAction = message => () => calledMessages.push(message);
+    const component = shallow(<View counter={0} onAction={onAction} />);
     component.find('button.add').simulate('click');
     expect(calledMessages).toContain(INCREMENT);
   });
 
   it('should container DECREMENT when minus button is clicked', () => {
     const calledMessages = [];
-    const onMinusButtonClick = () => calledMessages.push(DECREMENT);
-    const component = shallow(<View counter={0} onMinusButtonClick={onMinusButtonClick} />);
+    const onAction = message => () => calledMessages.push(message);
+    const component = shallow(<View counter={0} onAction={onAction} />);
     component.find('button.minus').simulate('click');
     expect(calledMessages).toContain(DECREMENT);
   });
